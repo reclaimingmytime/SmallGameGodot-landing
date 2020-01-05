@@ -3,6 +3,17 @@ function nl2br (str, is_xhtml) {
     return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1'+ breakTag +'$2');
 }
   
+function escapeHtml(text) {
+    var map = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#039;'
+    };
+  
+    return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+  }
 hasChangelog = false;
 $("#changelog").click(function(){
     if(!hasChangelog) {
@@ -10,7 +21,7 @@ $("#changelog").click(function(){
         $.ajax({
         url: changelogURL,
         success: function(result){ 
-            $("#changelogContent").html(nl2br(result));
+            $("#changelogContent").html(nl2br(escapeHtml(result)));
         },
         error: function(result){ 
             $("#changelogContent").html('<p><span class="text-danger">Error loading changelog</span>. <a class="text-primary" target="_blank" rel="nofollow noopener noreferrer" href="' + changelogURL + '">View in browser</a>.</span></p>');
