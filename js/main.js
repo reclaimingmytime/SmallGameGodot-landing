@@ -1,0 +1,28 @@
+function nl2br (str, is_xhtml) {   
+    var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';    
+    return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1'+ breakTag +'$2');
+  }
+  
+  hasChangelog = false;
+  $("#changelog").click(function(){
+    if(!hasChangelog) {
+      var changelogURL = "https://raw.githubusercontent.com/MisterL2/SmallGameGodot/master/Releases/Changelog.txt";
+      $.ajax({
+        url: changelogURL,
+        success: function(result){ 
+          $("#changelogContent").html(nl2br(result));
+        },
+        error: function(result){ 
+          $("#changelogContent").html('<p><span class="text-danger">Error loading changelog</span>. <a class="text-primary" target="_blank" rel="nofollow noopener noreferrer" href="' + changelogURL + '">View in browser</a>.</span></p>');
+        },
+      });
+      hasChangelog = true;
+    }
+    
+    if(!$('#changelogContent').is(':visible')) {
+      $('html').animate({
+        scrollTop: $('#changelogScrollTarget').offset().top //scrolls to START of changelog
+      }, 'slow');
+    }
+    
+  });

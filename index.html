@@ -34,13 +34,26 @@
 
         <!-- Info -->
         <div class="mt-5 btn-group" role="group">
-          <a class="btn text-white btn-outline-info"
-            href="https://raw.githubusercontent.com/MisterL2/SmallGameGodot/master/Releases/Changelog.txt"
-            rel="nofollow noopener noreferrer" target="_blank"><i class="fas fa-code"></i> Changelog</a>
-          
+            <a class="btn text-white btn-outline-info"
+            id="changelog" data-toggle="collapse" href="#changelogNotice" role="button" aria-expanded="false" aria-controls="changelogNotice"><i class="fas fa-code"></i> Changelog</a>
+
             <a class="btn text-white btn-outline-info" href="https://github.com/MisterL2/SmallGameGodot"
             rel="nofollow noopener noreferrer" target="_blank"><i class="fab fa-github"></i> GitHub</a>
         </div>
+
+        <div class="collapse" id="changelogNotice">
+          <div class="card card-body mt-3 pb-0 bg-dark border-info">
+            <p id="changelogContent" class="text-light"></p>
+          </div>
+        </div>
+
+        <div id="changelogScrollTarget"></div>
       </div>
+
+      <!-- JavaScript -->
+      <script src="https://code.jquery.com/jquery-3.4.1.min.js"  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+      <script src="js/main.js"></script>
     </body>
 </html>
