@@ -17,7 +17,7 @@ function escapeHtml(text) {
 }
 
 hasChangelog = false;
-$("#changelog").click(function() {
+$("#changelog").on("click", function() {
   if (!hasChangelog) {
     var changelogURL = "https://raw.githubusercontent.com/MisterL2/SmallGameGodot/master/Releases/Changelog.txt";
     $.ajax({
