@@ -43,7 +43,7 @@ document.querySelector("#changelog").addEventListener("click", function() {
   }
 
   if (isHidden(document.querySelector('#changelogContent'))) {
-    /* TODO replace with vanilla JS */
+    /* TODO replace with vanilla JS to go back to using jquery slim */
     $('html').animate({
       scrollTop: $('#changelogScrollTarget').offset().top //scrolls to START of changelog
     }, 'slow');
