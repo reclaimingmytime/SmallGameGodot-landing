@@ -39,6 +39,7 @@ $("#changelog").on("click", function() {
     hasChangelog = true;
   }
 
+  /* TODO replace with vanilla JS */
   if (!$('#changelogContent').is(':visible')) {
     $('html').animate({
       scrollTop: $('#changelogScrollTarget').offset().top //scrolls to START of changelog
