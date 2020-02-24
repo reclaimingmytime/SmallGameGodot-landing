@@ -14,6 +14,10 @@ var sanitizeHTML = function (str) {
 	return temp.innerHTML;
 };
 
+function isHidden(el) {
+  return (el.offsetParent === null)
+}
+
 /**
  * Retrieves Changelog
  */
@@ -38,8 +42,8 @@ document.querySelector("#changelog").addEventListener("click", function() {
     retrievedChangelog = true;
   }
 
-  /* TODO replace with vanilla JS */
-  if (!$('#changelogContent').is(':visible')) {
+  if (isHidden(document.querySelector('#changelogContent'))) {
+    /* TODO replace with vanilla JS */
     $('html').animate({
       scrollTop: $('#changelogScrollTarget').offset().top //scrolls to START of changelog
     }, 'slow');
