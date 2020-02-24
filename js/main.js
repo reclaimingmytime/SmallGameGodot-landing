@@ -36,7 +36,7 @@ document.querySelector("#changelog").addEventListener("click", function() {
     .then(data => {
       document.querySelector("#changelogContent").innerHTML = nl2br(sanitizeHTML(data));
     }).catch(error => {
-      document.querySelector("#changelogContent").innerHTML = '<p><span class="text-danger">Error loading changelog</span>. <a class="text-primary" target="_blank" rel="nofollow noopener noreferrer" href="' + changelogURL + '">View in browser</a>.</span></p>';
+      document.querySelector("#changelogContent").innerHTML = '<span class="text-danger">Error loading changelog</span>. <a class="text-primary" target="_blank" rel="nofollow noopener noreferrer" href="' + changelogURL + '">View in browser</a>.</span>';
       });
 
     retrievedChangelog = true;
