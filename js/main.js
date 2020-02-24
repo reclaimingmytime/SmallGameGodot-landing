@@ -14,6 +14,9 @@ var sanitizeHTML = function (str) {
 	return temp.innerHTML;
 };
 
+/**
+ * Retrieves Changelog
+ */
 hasChangelog = false;
 $("#changelog").on("click", function() {
   if (!hasChangelog) {
@@ -27,7 +30,7 @@ $("#changelog").on("click", function() {
       return response.text();
     })
     .then(data => {
-      document.querySelector("#changelogContent").innerHTML = nl2br(data);
+      document.querySelector("#changelogContent").innerHTML = nl2br(sanitizeHTML(data));
     }).catch(error => {
       console.log(error);
       document.querySelector("#changelogContent").innerHTML = '<p><span class="text-danger">Error loading changelog</span>. <a class="text-primary" target="_blank" rel="nofollow noopener noreferrer" href="' + changelogURL + '">View in browser</a>.</span></p>';
