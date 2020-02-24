@@ -18,7 +18,7 @@ var sanitizeHTML = function (str) {
  * Retrieves Changelog
  */
 hasChangelog = false;
-$("#changelog").on("click", function() {
+document.querySelector("#changelog").addEventListener("click", function() {
   if (!hasChangelog) {
     var changelogURL = "https://raw.githubusercontent.com/MisterL2/SmallGameGodot/master/Releases/Changelog.txt";
 
