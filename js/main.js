@@ -28,7 +28,7 @@ document.querySelector("#changelog").addEventListener("click", function() {
 
     fetch(changelogURL)
     .then(function (response) {
-      if(response.status >= 200 && response.status < 400) {
+      if(response.status < 200 || response.status >= 400) {
         throw new Error("Unsuccessful request.");
       }
       return response.text();
