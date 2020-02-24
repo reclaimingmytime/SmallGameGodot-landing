@@ -38,7 +38,7 @@ document.querySelector("#changelog").addEventListener("click", function() {
       document.querySelector("#changelogContent").innerHTML = nl2br(sanitizeHTML(data));
     }).catch(error => {
       document.querySelector("#changelogCard").classList.add("border-danger");
-      document.querySelector("#changelogContent").innerHTML = 'Error loading changelog. <a class="text-primary" target="_blank" rel="nofollow noopener noreferrer" href="' + changelogURL + '">View in browser</a>.';
+      document.querySelector("#changelogContent").innerHTML = '<h5 class="card-title">Error loading changelog.</h5> <a class="btn btn-primary" target="_blank" rel="nofollow noopener noreferrer" href="' + changelogURL + '">View in browser</a>';
       });
 
     retrievedChangelog = true;
