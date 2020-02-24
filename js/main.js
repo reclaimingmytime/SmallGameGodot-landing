@@ -2,19 +2,17 @@ function nl2br(str) {
   return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1<br>$2');
 }
   
-function escapeHtml(text) {
-  var map = {
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#039;'
-  };
-
-  return text.replace(/[&<>"']/g, function(m) {
-    return map[m];
-  });
-}
+/*!
+ * Sanitize and encode all HTML in a user-submitted string
+ * (c) 2018 Chris Ferdinandi, MIT License, https://gomakethings.com
+ * @param  {String} str  The user-submitted string
+ * @return {String} str  The sanitized string
+ */
+var sanitizeHTML = function (str) {
+	var temp = document.createElement('div');
+	temp.textContent = str;
+	return temp.innerHTML;
+};
 
 hasChangelog = false;
 $("#changelog").on("click", function() {
@@ -29,10 +27,10 @@ $("#changelog").on("click", function() {
       return response.text();
     })
     .then(data => {
-      $("#changelogContent").html(nl2br(escapeHtml(data)));
+      document.querySelector("#changelogContent").innerHTML = nl2br(data);
     }).catch(error => {
       console.log(error);
-      $("#changelogContent").html('<p><span class="text-danger">Error loading changelog</span>. <a class="text-primary" target="_blank" rel="nofollow noopener noreferrer" href="' + changelogURL + '">View in browser</a>.</span></p>');
+      document.querySelector("#changelogContent").innerHTML = '<p><span class="text-danger">Error loading changelog</span>. <a class="text-primary" target="_blank" rel="nofollow noopener noreferrer" href="' + changelogURL + '">View in browser</a>.</span></p>';
       });
 
     hasChangelog = true;
