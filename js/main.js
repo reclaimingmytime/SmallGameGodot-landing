@@ -19,16 +19,19 @@ function escapeHtml(text) {
 hasChangelog = false;
 $("#changelog").on("click", function() {
   if (!hasChangelog) {
-    var changelogURL = "https://raw.githubusercontent.com/MisterL2/SmallGameGodot/master/Releases/Changelog.txt";
-    $.ajax({
-      url: changelogURL,
-      success: function(result) {
-        $("#changelogContent").html(nl2br(escapeHtml(result)));
-      },
-      error: function(result) {
-        $("#changelogContent").html('<p><span class="text-danger">Error loading changelog</span>. <a class="text-primary" target="_blank" rel="nofollow noopener noreferrer" href="' + changelogURL + '">View in browser</a>.</span></p>');
-      },
-    });
+    var changelogURL = "https://raw.githubusercontent.com/MisterL2/SmallGameGodot/master/Releases/Changelog.txtsd";
+
+    fetch(changelogURL)
+    .then(function (response) {
+      return response.text();
+    })
+    .then(data => {
+      $("#changelogContent").html(nl2br(escapeHtml(data)));
+    }).catch(error => {
+      console.log(error);
+      $("#changelogContent").html('<p><span class="text-danger">Error loading changelog</span>. <a class="text-primary" target="_blank" rel="nofollow noopener noreferrer" href="' + changelogURL + '">View in browser</a>.</span></p>');
+      });
+
     hasChangelog = true;
   }
 
