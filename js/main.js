@@ -19,7 +19,7 @@ function escapeHtml(text) {
 hasChangelog = false;
 $("#changelog").on("click", function() {
   if (!hasChangelog) {
-    var changelogURL = "https://raw.githubusercontent.com/MisterL2/SmallGameGodot/master/Releases/Changelog.txtsd";
+    var changelogURL = "https://raw.githubusercontent.com/MisterL2/SmallGameGodot/master/Releases/Changelog.txt";
 
     fetch(changelogURL)
     .then(function (response) {
