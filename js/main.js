@@ -34,9 +34,11 @@ document.querySelector("#changelog").addEventListener("click", function() {
       return response.text();
     })
     .then(data => {
+      document.querySelector("#changelogCard").classList.add("border-info");
       document.querySelector("#changelogContent").innerHTML = nl2br(sanitizeHTML(data));
     }).catch(error => {
-      document.querySelector("#changelogContent").innerHTML = '<span class="text-danger">Error loading changelog</span>. <a class="text-primary" target="_blank" rel="nofollow noopener noreferrer" href="' + changelogURL + '">View in browser</a>.</span>';
+      document.querySelector("#changelogCard").classList.add("border-danger");
+      document.querySelector("#changelogContent").innerHTML = 'Error loading changelog. <a class="text-primary" target="_blank" rel="nofollow noopener noreferrer" href="' + changelogURL + '">View in browser</a>.</span>';
       });
 
     retrievedChangelog = true;
