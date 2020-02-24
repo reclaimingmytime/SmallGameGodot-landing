@@ -23,6 +23,9 @@ $("#changelog").on("click", function() {
 
     fetch(changelogURL)
     .then(function (response) {
+      if(response.status != 200) {
+        throw new Error("Unsuccessful request.");
+      }
       return response.text();
     })
     .then(data => {
