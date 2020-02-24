@@ -17,9 +17,9 @@ var sanitizeHTML = function (str) {
 /**
  * Retrieves Changelog
  */
-hasChangelog = false;
+retrievedChangelog = false;
 document.querySelector("#changelog").addEventListener("click", function() {
-  if (!hasChangelog) {
+  if (!retrievedChangelog) {
     var changelogURL = "https://raw.githubusercontent.com/MisterL2/SmallGameGodot/master/Releases/Changelog.txt";
 
     fetch(changelogURL)
@@ -35,7 +35,7 @@ document.querySelector("#changelog").addEventListener("click", function() {
       document.querySelector("#changelogContent").innerHTML = '<p><span class="text-danger">Error loading changelog</span>. <a class="text-primary" target="_blank" rel="nofollow noopener noreferrer" href="' + changelogURL + '">View in browser</a>.</span></p>';
       });
 
-    hasChangelog = true;
+    retrievedChangelog = true;
   }
 
   /* TODO replace with vanilla JS */
