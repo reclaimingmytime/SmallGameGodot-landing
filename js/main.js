@@ -1,7 +1,3 @@
-function nl2br(str) {
-  return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1<br>$2');
-}
-  
 /*!
  * Sanitize and encode all HTML in a user-submitted string
  * (c) 2018 Chris Ferdinandi, MIT License, https://gomakethings.com
@@ -14,8 +10,12 @@ var sanitizeHTML = function (str) {
 	return temp.innerHTML;
 };
 
+function nl2br(str) {
+  return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1<br>$2');
+}
+
 function isHidden(el) {
-  return (el.offsetParent === null)
+  return (el.offsetParent === null);
 }
 
 /**
