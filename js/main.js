@@ -45,10 +45,9 @@ document.querySelector("#changelog").addEventListener("click", function() {
   }
 
   if (isHidden(document.querySelector('#changelogContent'))) {
-    /* TODO replace with vanilla JS or drop it entirely to go back to using jquery slim */
-    $('html').animate({
-      scrollTop: $('#changelogScrollTarget').offset().top //scrolls to START of changelog
-    }, 'slow');
+    $('#changelogNotice').on('shown.bs.collapse', function (e) {
+      window.location.href = "#changelogView";
+    });
   }
 
 });
