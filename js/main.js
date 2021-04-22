@@ -46,7 +46,7 @@ document.querySelector("#changelog").addEventListener("click", function() {
 
   if (isHidden(document.querySelector('#changelogContent'))) {
     $('#changelogNotice').on('shown.bs.collapse', function (e) {
-      window.location.href = "#changelogView";
+      window.location.href = "#changelogview";
     });
   }
 
