@@ -18,7 +18,7 @@ function isHidden(el) {
   return (el.offsetParent === null);
 }
 
-function addChangelog() {
+function addChangelog() {
   var changelogURL = "https://raw.githubusercontent.com/MisterL2/SmallGameGodot/master/Releases/Changelog.txt";
 
   fetch(changelogURL)
