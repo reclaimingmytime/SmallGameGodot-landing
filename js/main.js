@@ -18,6 +18,15 @@ function isHidden(el) {
   return (el.offsetParent === null);
 }
 
+function scrollToChangelog() {
+  window.location.href = "#changelogview";
+}
+function scrollToChangelogWhenReady() {
+  $('#changelogNotice').on('shown.bs.collapse', function (e) {
+    scrollToChangelog();
+  });
+}
+
 function addChangelog() {
   var changelogURL = "https://raw.githubusercontent.com/MisterL2/SmallGameGodot/master/Releases/Changelog.txt";
 
@@ -36,9 +45,6 @@ function addChangelog() {
     document.querySelector("#changelogContent").innerHTML = '<h5 class="card-title">Error loading changelog.</h5> <a class="btn btn-primary" target="_blank" rel="nofollow noopener noreferrer" href="' + changelogURL + '">View in browser</a>';
     });
 }
-function scrollToChangelog() {
-  window.location.href = "#changelogview";
-}
 
 /**
  * Retrieves and scrolls to changelog
@@ -49,9 +55,7 @@ if(window.location.hash == "#changelogview") {
   retrievedChangelog = true;
 
   $("#changelogNotice").collapse('show');
-  $('#changelogNotice').on('shown.bs.collapse', function (e) {
-    scrollToChangelog();
-  });
+  scrollToChangelogWhenReady();
 }
 
 document.querySelector("#changelog").addEventListener("click", function() {
@@ -61,9 +65,9 @@ document.querySelector("#changelog").addEventListener("click", function() {
   }
 
   if (isHidden(document.querySelector('#changelogContent'))) {
-    $('#changelogNotice').on('shown.bs.collapse', function (e) {
-      if(window.location.hash != "#changelogview") scrollToChangelog();
-    });
+    if(window.location.hash != "#changelogview") {
+      scrollToChangelogWhenReady();
+    }
   } else {
     history.replaceState('', '', ' '); //remove hash from url
   }
