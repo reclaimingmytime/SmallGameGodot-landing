@@ -43,7 +43,7 @@ function addChangelog() {
     scrollToChangelogWhenReady();
   }).catch(error => {
     document.querySelector("#changelogCard").classList.add("border-danger");
-    document.querySelector("#changelogContent").innerHTML = '<h5 class="card-title">Error loading changelog.</h5> <a class="btn btn-primary" target="_blank" rel="nofollow noopener noreferrer" href="' + changelogURL + '">View in browser</a>';
+    document.querySelector("#changelogContent").innerHTML = '<h5 class="card-title">Error Loading Changelog</h5> <a class="btn btn-primary" target="_blank" rel="nofollow noopener noreferrer" href="' + changelogURL + '">View in browser</a>';
     scrollToChangelogWhenReady();
     });
 }
@@ -63,7 +63,6 @@ document.querySelector("#changelog").addEventListener("click", function() {
     addChangelog();
     retrievedChangelog = true;
   }
-
   if (!isHidden(document.querySelector('#changelogContent'))) {
     history.replaceState('', '', ' '); //remove hash from url
   }
