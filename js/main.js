@@ -22,9 +22,13 @@ function scrollToChangelog() {
   window.location.href = "#changelogview";
 }
 function scrollToChangelogWhenReady() {
-  $('#changelogNotice').on('shown.bs.collapse', function (e) {
+  if(!$('#changelogNotice').is(":visible")) {
+    $('#changelogNotice').on('shown.bs.collapse', function (e) {
+      scrollToChangelog();
+    });
+  } else {
     scrollToChangelog();
-  });
+  }
 }
 
 function addChangelog() {
@@ -65,5 +69,7 @@ document.querySelector("#changelog").addEventListener("click", function() {
   }
   if (!isHidden(document.querySelector('#changelogContent'))) {
     history.replaceState('', '', ' '); //remove hash from url
+  } else {
+    scrollToChangelogWhenReady();
   }
 });
