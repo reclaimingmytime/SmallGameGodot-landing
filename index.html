@@ -12,6 +12,11 @@
         html {
           scroll-behavior: smooth;
         }
+        @media (min-width: 767px) {
+          #download {
+            max-width: 50%;
+          }
+        }
       </style>
    </head>
    <body class="bg-dark">
@@ -26,12 +31,12 @@
           <p class="text-light"><i class="fas fa-mouse"></i> Mouse recommended.</p>
   
           <!-- Download -->
-          <div class="btn-group-vertical mt-2 mb-2" role="group" aria-label="Download">
-            <a class="btn btn-lg btn-primary"
+          <div id="download" class="mt-2 mb-2 m-auto" role="group" aria-label="Download">
+            <a class="btn btn-lg btn-block btn-primary mb-2"
               href="https://raw.githubusercontent.com/MisterL2/SmallGameGodot/master/Releases/Windows.zip"
               rel="nofollow noopener noreferrer"><i class="fab fa-windows"></i> Download for Windows</a>
           
-            <a class="btn btn-lg btn-primary"
+            <a class="btn btn-lg btn-block btn-primary"
               href="https://raw.githubusercontent.com/MisterL2/SmallGameGodot/master/Releases/macOS.zip"
               rel="nofollow noopener noreferrer"><i class="fab fa-apple"></i> Download for macOS</a>
           </div>
